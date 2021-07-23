@@ -1,0 +1,23 @@
+#include<iostream>
+using namespace std;
+
+
+int main(){
+    int n;
+    cin>>n;
+    int x;
+    int j = 0;
+    int temp =n;
+    do{
+        x = n%10;
+        
+        j=(j*10)+x;
+        n/=10;
+    }
+    while(n);
+    if(j==temp) cout<<"palindrome";
+    else cout<<"NO palindrome";
+    
+    
+    return 0;
+}
