@@ -1,0 +1,41 @@
+
+bool isPrime(int num) {
+    // 1 is not prime
+    if (num == 1) {
+        return false;
+    }
+
+    for (int i = 2; i < num; i++) {
+        // If number is not prime
+        if (num % i == 0) {
+            return false;
+        }
+    }
+    // Number is prime
+    return true;
+}
+int countMegaPrimeNumber(int left, int right) {
+    int countMegaPrime = 0;
+    for (int i = left; i <= right; i++) {
+        int num;
+        bool flag;
+        // Check whether 'i' is prime or not
+        if (isPrime(i)) {
+            num = i;
+            flag = true;
+            // Check whether every digit of 'i' is prime or not
+            while (num != 0) {
+                int lastDigit = num % 10;
+                if (!isPrime(lastDigit) || lastDigit == 0) {
+                    flag = false;
+                    break;
+                }
+                num = num / 10;
+            }
+            if (flag) {
+                countMegaPrime += 1;
+            }
+        }
+    }
+    return countMegaPrime;
+}
